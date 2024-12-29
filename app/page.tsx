@@ -1,101 +1,118 @@
-import Image from "next/image";
+'use client'
+
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { ThemeToggle } from '@/components/ThemeToggle'
+import { ScrambleHeading } from '@/components/ScrambleHeading'
+import { KeyboardNav } from '@/components/KeyboardNav'
+import { TimelineSection } from '@/components/TimelineSection'
+import { LeadershipSection } from '@/components/LeadershipSection'
+import { ProjectsSection } from '@/components/ProjectsSection'
+import { BlogSection } from '@/components/BlogSection'
+import { MapPin, Building2, GraduationCap } from 'lucide-react'
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [activeSection, setActiveSection] = useState('home')
+  const [nameScrambled, setNameScrambled] = useState(false)
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  useEffect(() => {
+    const handleScramble = (event: CustomEvent) => {
+      setActiveSection(event.detail.sectionId)
+    }
+
+    window.addEventListener('scrambleHeading', handleScramble as EventListener)
+    return () => {
+      window.removeEventListener('scrambleHeading', handleScramble as EventListener)
+    }
+  }, [])
+
+  return (
+    <div className="min-h-screen bg-white dark:bg-[rgb(18,18,18)] text-gray-900 dark:text-white">
+      <ThemeToggle />
+      <KeyboardNav />
+
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="home" className="pt-20 sm:pt-24">
+          <ScrambleHeading 
+            text="dawid bakowski" 
+            as="h1"
+            className="text-3xl sm:text-4xl font-bold mb-8" 
+            scramble={!nameScrambled}
+            onScrambleComplete={() => setNameScrambled(true)}
+          />
+          <div className="space-y-3 text-gray-400 text-sm sm:text-base"> 
+            <div className="flex items-center gap-2">
+              <MapPin className="w-5 h-5 flex-shrink-0" /> 
+              <span>düsseldorf, germany</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Building2 className="w-5 h-5 flex-shrink-0" /> 
+              <span>cloud solution engineering @ mhp - a porsche company</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <GraduationCap className="w-5 h-5 flex-shrink-0" /> 
+              <span>information systems @ university of cologne</span>
+            </div>
+          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-gray-200 mt-8 text-sm sm:text-base" 
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Passionate about innovative technologies with extensive experience in developing
+            scalable software solutions. Specialized in <span className="text-green-500">cloud computing</span>, 
+            <span className="text-green-500">AI integration</span>, and <span className="text-green-500">modern web development</span>.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="flex flex-wrap gap-4 sm:gap-6 mt-8 text-xs sm:text-sm" 
           >
-            Read our docs
-          </a>
-        </div>
+            <a
+              href="mailto:your.email@example.com"
+              className="text-gray-400 hover:text-green-500 underline"
+            >
+              email
+            </a>
+            <a
+              href="https://x.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-green-500 underline"
+            >
+              x.com
+            </a>
+            <a
+              href="https://linkedin.com/in/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-green-500 underline"
+            >
+              linkedin
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-green-500 underline"
+            >
+              resume
+            </a>
+          </motion.div>
+        </section>
+
+        <TimelineSection scramble={activeSection === 'work'} className="-mt-16 mb-12" />
+        <LeadershipSection scramble={activeSection === 'leadership'} className="mb-12" />
+        <ProjectsSection scramble={activeSection === 'projects'} className="mb-12" />
+        <BlogSection scramble={activeSection === 'blog'} className="mb-12" />
+
+        <footer className="py-8 text-center text-xs text-gray-400">
+          <p>made by dawid bakowski, inspired by <a href="https://x.com/nexxeln" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-500">nexxel</a></p>
+        </footer>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
-  );
+  )
 }
+
