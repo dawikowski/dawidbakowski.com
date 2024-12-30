@@ -1,6 +1,5 @@
 import { getPostData, getSortedPostsData } from '@/lib/blog'
 import Link from 'next/link'
-import { ScrambleHeading } from '@/components/ScrambleHeading'
 import { KeyboardNav } from '@/components/KeyboardNav'
 import { ThemeToggle } from '@/components/ThemeToggle'
 
@@ -11,8 +10,13 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function Post({ params }: { params: { id: string } }) {
-  const postData = await getPostData(params.id)
+export default function Post({ params }: { params: { id: string } }) {
+  const postData = getPostData(params.id)
+  
+  if (!postData) {
+    return <div>Post not found</div>
+  }
+
   return (
     <div className="min-h-screen bg-white dark:bg-[rgb(18,18,18)] text-gray-900 dark:text-white">
       <KeyboardNav currentPage="blog" />
@@ -30,10 +34,9 @@ export default async function Post({ params }: { params: { id: string } }) {
         <article>
           <h1 className="text-3xl font-bold mb-4">{postData.title}</h1>
           <div className="text-gray-500 mb-8">{postData.date}</div>
-          <div 
-            className="prose dark:prose-invert max-w-none"
-            dangerouslySetInnerHTML={{ __html: postData.contentHtml }} 
-          />
+          <div className="prose dark:prose-invert max-w-none">
+            {postData.content}
+          </div>
         </article>
       </main>
     </div>
