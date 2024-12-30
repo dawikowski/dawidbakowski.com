@@ -1,7 +1,7 @@
 import { getPostData, getSortedPostsData } from '@/lib/blog'
 import Link from 'next/link'
 import { KeyboardNav } from '@/components/KeyboardNav'
-import { ThemeToggle } from '@/components/ThemeToggle'
+// import { ThemeToggle } from '@/components/ThemeToggle'
 
 export async function generateStaticParams() {
   const posts = getSortedPostsData()
@@ -20,7 +20,7 @@ export default function Post({ params }: { params: { id: string } }) {
   return (
     <div className="min-h-screen bg-white dark:bg-[rgb(18,18,18)] text-gray-900 dark:text-white">
       <KeyboardNav currentPage="blog" />
-      <ThemeToggle />
+      {/* <ThemeToggle /> */}
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="mb-8">
