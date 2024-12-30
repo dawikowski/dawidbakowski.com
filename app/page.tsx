@@ -12,22 +12,36 @@ import { BlogSection } from '@/components/BlogSection'
 import { MapPin, Building2, GraduationCap } from 'lucide-react'
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState('home')
   const [nameScrambled, setNameScrambled] = useState(false)
 
   useEffect(() => {
-    const handleScramble = (event: CustomEvent) => {
-      setActiveSection(event.detail.sectionId)
+    const handleKeyPress = (event: KeyboardEvent) => {
+      const key = event.key.toLowerCase()
+      if (['h', 'w', 'l', 'p', 'b'].includes(key)) {
+        const sectionId = {
+          'h': 'home',
+          'w': 'work',
+          'l': 'leadership',
+          'p': 'projects',
+          'b': 'blog'
+        }[key] ?? 'home'
+        const element = document.getElementById(sectionId)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }
     }
 
-    window.addEventListener('scrambleHeading', handleScramble as EventListener)
+    window.addEventListener('keydown', handleKeyPress)
+
     return () => {
-      window.removeEventListener('scrambleHeading', handleScramble as EventListener)
+      window.removeEventListener('keydown', handleKeyPress)
     }
   }, [])
 
+
   return (
-    <div className="min-h-screen bg-white dark:bg-[rgb(18,18,18)] text-gray-900 dark:text-white">
+    <div className="min-h-screen bg-white dark:bg-[rgb(18,18,18)] text-gray-900 dark:text-gray-100">
       <ThemeToggle />
       <KeyboardNav />
 
@@ -40,7 +54,7 @@ export default function Home() {
             scramble={!nameScrambled}
             onScrambleComplete={() => setNameScrambled(true)}
           />
-          <div className="space-y-3 text-gray-400 text-sm sm:text-base"> 
+          <div className="space-y-3 text-gray-600 dark:text-gray-300 text-sm sm:text-base"> 
             <div className="flex items-center gap-2">
               <MapPin className="w-5 h-5 flex-shrink-0" /> 
               <span>düsseldorf, germany</span>
@@ -58,11 +72,12 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-200 mt-8 text-sm sm:text-base" 
+            className="text-gray-700 dark:text-gray-200 mt-8 text-sm sm:text-base" 
           >
-            Passionate about innovative technologies with extensive experience in developing
-            scalable software solutions. Specialized in <span className="text-green-500">cloud computing</span>, 
-            <span className="text-green-500">AI integration</span>, and <span className="text-green-500">modern web development</span>.
+            i'm in my mid 20s, studying information systems. i've a <span className="text-green-500">passion for solving problems</span>.
+            my biggest strength is always being curious and having a drive for learning.
+            currently interested in <span className="text-green-500">cloud computing</span>, latest <span className="text-green-500">ai developments</span> and how <span className="text-green-500">businesses</span> can benefit from it.
+            when i'm not reading about tech, you'll find me nerding about nba statistics, playing chess, or at the gym.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -71,24 +86,24 @@ export default function Home() {
             className="flex flex-wrap gap-4 sm:gap-6 mt-8 text-xs sm:text-sm" 
           >
             <a
-              href="mailto:your.email@example.com"
-              className="text-gray-400 hover:text-green-500 underline"
+              href="mailto:dave.bakowski@gmail.com"
+              className="text-gray-500 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-400 underline"
             >
               email
             </a>
             <a
-              href="https://x.com/yourusername"
+              href="https://x.com/dawikowski"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-green-500 underline"
+              className="text-gray-500 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-400 underline"
             >
               x.com
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://linkedin.com/in/dawidbakowski"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-green-500 underline"
+              className="text-gray-500 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-400 underline"
             >
               linkedin
             </a>
@@ -96,20 +111,20 @@ export default function Home() {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-green-500 underline"
+              className="text-gray-500 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-400 underline"
             >
               resume
             </a>
           </motion.div>
         </section>
 
-        <TimelineSection scramble={activeSection === 'work'} className="-mt-16 mb-12" />
-        <LeadershipSection scramble={activeSection === 'leadership'} className="mb-12" />
-        <ProjectsSection scramble={activeSection === 'projects'} className="mb-12" />
-        <BlogSection scramble={activeSection === 'blog'} className="mb-12" />
+        <TimelineSection className="-mt-16 mb-12" />
+        <LeadershipSection className="mb-12" />
+        <ProjectsSection className="mb-12" />
+        <BlogSection className="mb-12" />
 
-        <footer className="py-8 text-center text-xs text-gray-400">
-          <p>made by dawid bakowski, inspired by <a href="https://x.com/nexxeln" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-500">nexxel</a></p>
+        <footer className="py-8 text-center text-xs text-gray-500 dark:text-gray-400">
+          <p>made by dawid bakowski, inspired by <a href="https://x.com/nexxeln" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-400">nexxel</a></p>
         </footer>
       </main>
     </div>
