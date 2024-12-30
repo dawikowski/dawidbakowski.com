@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
 const characters = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん'
@@ -22,13 +22,12 @@ export function ScrambleHeading({
 }: ScrambleHeadingProps) {
   const [scrambledText, setScrambledText] = useState(text)
   const [hasScrambled, setHasScrambled] = useState(false)
-  const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
-    if (scramble) {
+    if (scramble && !hasScrambled) {
       let iteration = 0;
       const interval = setInterval(() => {
-        setScrambledText(prevText =>
+        setScrambledText(() =>
           text
             .split("")
             .map((letter, index) => {
@@ -43,15 +42,16 @@ export function ScrambleHeading({
         if (iteration >= text.length) {
           clearInterval(interval);
           setScrambledText(text);
+          setHasScrambled(true);
           onScrambleComplete?.();
         }
 
-        iteration += 1 / 4; // Update: Changed iteration increment
-      }, 25); // Update: Changed interval timing
+        iteration += 1 / 4;
+      }, 25);
 
       return () => clearInterval(interval);
     }
-  }, [scramble, text, onScrambleComplete]);
+  }, [scramble, text, onScrambleComplete, hasScrambled]);
 
   return (
     <motion.div
