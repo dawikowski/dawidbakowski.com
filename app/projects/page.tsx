@@ -5,56 +5,114 @@ import { motion } from 'framer-motion'
 import { ProjectModal } from '@/components/ProjectModal'
 import Link from 'next/link'
 import { ScrambleHeading } from '@/components/ScrambleHeading'
-import { ArrowUpRight } from 'lucide-react'
 import { KeyboardNav } from '@/components/KeyboardNav'
 import { ThemeToggle } from '@/components/ThemeToggle'
 
-const projects = [
+type Project = {
+  title: string
+  date: string
+  description: string
+  detailedDescription: string
+  image: string
+  skills: string[]
+  achievements: string[]
+  website?: string
+  isNDA?: boolean
+}
+
+const projects: Project[] = [
   {
-    title: "AR Shopping Experience",
-    date: "may 2023",
-    description: "Developed an augmented reality solution for virtual product visualization in e-commerce.",
-    image: "/placeholder.svg?height=100&width=100",
-    skills: ["AR", "React Native", "Three.js"],
+    title: "my personal website and portfolio",
+    date: "dec 2024",
+    description: "developed a responsive personal website to showcase projects and skills",
+    detailedDescription: "built a personal portfolio from the ground up during christmas break to establish an online presence and display my projects",
+    website: "https://github.com/dawikowski/personal-website-2025",
+    image: "/images/myname.jpg",
+    skills: ["software engineering", "typescript", "next.js", "tailwind css"],
     achievements: [
-      "Increased user engagement by 40%",
-      "Reduced product return rates by 25%",
-      "Implemented AR features for over 1000 products"
+      "made the text do a little japanese scramble",
+      "optimizations to keep the site speed on point",
+      "got the navigation bar silky smooth",
+      "implemented responsive layouts",
+      "had a lot of fun using v0 by vercel"
     ],
-    github: "https://github.com/yourusername/ar-shopping",
-    demo: "https://ar-shopping-demo.com"
   },
   {
-    title: "Energy Crisis Solution",
+    title: "easyfind retail navigation",
+    date: "jul 2024",
+    description: "designed a store navigation concept integrating ar with indoor positioning",
+    detailedDescription: "created ar retail navigation app concept with intuitive design and scalable cloud backend for the information systems development course",
+    website: "https://drive.google.com/file/d/1E4XtXmCgUS3gMlhpVgt2mktw5xe2j0f6/view?usp=sharing",
+    image: "/images/easyfind.jpg",
+    skills: ["cloud architecture", "system design", "ui/ux design"],
+    achievements: [
+      "planned and designed scalable cloud architecture",
+      "researched ar applications in retail",
+      "prototyped user-friendly interfaces",
+      "created agile development and timeline"
+    ],
+  },
+  {
+    title: "azure openai enterprise demo",
+    date: "aug 2023",
+    description: "presented a cognitive search tool that lets you chat with your business data",
+    detailedDescription: "demonstrated an azure openai chatbot demo that integrates with enterprise data, enabling conversational search powered by azure cognitive search",
+    website: "https://www.linkedin.com/feed/update/urn:li:activity:7069571634516398082/",
+    image: "/images/openaidemo.jpg",
+    skills: ["azure openai", "cognitive search", "technical presentation"],
+    achievements: [
+      "built an entire presentation from scratch",
+      "highlighted potential enterprise applications",
+      "cognitive search for document indexing and retrieval",
+      "explored prompt engineering techniques",
+    ]
+  },
+  {
+    title: "sandbox iot smart energy monitoring",
     date: "feb 2023",
-    description: "Created an AI-powered system for optimizing energy consumption in smart buildings.",
-    image: "/placeholder.svg?height=100&width=100",
-    skills: ["AI", "IoT", "Data Analysis"],
+    description: "designed a home energy monitoring system concept",
+    detailedDescription: "designed a home energy monitoring system concept using iot sensors and a mobile app for the system analysis and design course",
+    website: "https://drive.google.com/file/d/1_K985Eh4BYebRQjR2SaaEGdVnZejEZtR/view?usp=sharing",
+    image: "/images/sandbox.jpg",
+    skills: ["system analysis", "system design", "requirements engineering"],
     achievements: [
-      "Reduced energy consumption by 30% in pilot buildings",
-      "Developed predictive maintenance algorithms",
-      "Integrated with major smart home platforms"
-    ],
-    github: "https://github.com/yourusername/energy-crisis",
-    demo: "https://energy-crisis-solution.com"
+      "designed a layered architecture using azure",
+      "modeled system functionality and structure",
+      "prototyped an intuitive mobile app ui",
+      "gathered and prioritized system requirements"
+    ]
   },
   {
-    title: "Blockchain Voting System",
-    date: "nov 2022",
-    description: "Implemented a secure and transparent voting system using blockchain technology.",
-    image: "/placeholder.svg?height=100&width=100",
-    skills: ["Blockchain", "Smart Contracts", "Cryptography"],
+    title: "hr survey analysis tool",
+    date: "feb 2022",
+    description: "developed an excel dashboard to automate hr surveys",
+    detailedDescription: "created an automated excel tool as a freelance consultant to optimize the processing and analysis of employee surveys for a defense company's hr team",
+    image: "/images/surveyautomation.jpg",
+    skills: ["automation", "data processing", "it-consulting"],
     achievements: [
-      "Successfully used in a local election with 10,000 voters",
-      "Achieved 99.99% uptime during voting period",
-      "Reduced vote counting time from days to minutes"
+      "enhanced ability to quickly derive insights from data",
+      "automated data processing tasks",
     ],
-    github: "https://github.com/yourusername/blockchain-voting"
+    isNDA: true
+  },
+  {
+    title: "contactless payment at gas stations",
+    date: "dec 2021",
+    description: "tested a new payment feature at gas stations across europe",
+    detailedDescription: "worked as a freelance consultant to test a contactless payment solution at gas stations in germany, benelux, and austria for a major european mobility services company",
+    image: "/images/contactlesspayment.jpg",
+    skills: ["software testing", "data analysis", "it-consulting"],
+    achievements: [
+      "analyzed test results and user feedback data",
+      "executed comprehensive test cases",
+      "evaluated functionality and security",
+    ],
+    isNDA: true
   }
 ]
 
 export default function ProjectsPage() {
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [hasScrambled, setHasScrambled] = useState(false)
 
   return (
@@ -66,20 +124,14 @@ export default function ProjectsPage() {
         <div className="flex items-center justify-between mb-8">
           <ScrambleHeading
             text="# projects"
-            className="text-3xl font-bold"
+            className="text-3xl font-bold text-gray-900 dark:text-white"
             scramble={!hasScrambled}
             onScrambleComplete={() => setHasScrambled(true)}
           />
-          <Link 
-            href="/"
-            className="text-sm text-green-500 hover:underline"
-          >
-            ← back home
-          </Link>
         </div>
 
-        <p className="text-gray-400 font-mono text-sm sm:text-base mb-8">
-          here are some of the projects i've worked on. i love building tools that solve real problems and exploring new technologies along the way.
+        <p className="text-gray-600 dark:text-gray-400 font-mono text-sm sm:text-base mb-8">
+          here are some of the projects i've worked on along the way.
         </p>
 
         <div className="space-y-6">
@@ -91,18 +143,19 @@ export default function ProjectsPage() {
               className="group relative border border-gray-800 rounded-lg p-6 hover:border-green-500/50 transition-colors cursor-pointer"
               onClick={() => setSelectedProject(project)}
             >
-              <h2 className="text-xl font-semibold mb-1 flex items-center">
-                {project.title}
-                <ArrowUpRight className="ml-2 w-5 h-5 text-green-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </h2>
-              <p className="text-sm text-gray-400 mb-2">{project.date}</p>
-              <p className="text-gray-400 mb-4">{project.description}</p>
+              <div className="flex items-center justify-between mb-2">
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+                  {project.title}
+                </h2>
+              </div>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{project.date}</p>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
               
               <div className="flex flex-wrap gap-2">
                 {project.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="px-3 py-1 bg-gray-800 text-gray-300 rounded-full text-sm"
+                    className="px-3 py-1 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm"
                   >
                     {skill}
                   </span>
@@ -115,7 +168,11 @@ export default function ProjectsPage() {
 
       {selectedProject && (
         <ProjectModal
-          project={selectedProject}
+          project={{
+            ...selectedProject,
+            website: selectedProject.website || '',
+            isNDA: selectedProject.isNDA
+          }}
           isOpen={!!selectedProject}
           onClose={() => setSelectedProject(null)}
         />
