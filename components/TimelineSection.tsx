@@ -9,7 +9,7 @@ const timelineEvents = [
     year: 'oct 2023 - present',
     title: 'cloud solution engineer',
     company: 'mhp - a porsche company',
-    website: 'https://www.mhp.com',
+    website: 'https://www.mhp.com/de/',
     additionalInfo: 'working student position',
     modalImages: [
       '/images/mhp1.jpg',
