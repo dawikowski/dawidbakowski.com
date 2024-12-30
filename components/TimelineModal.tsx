@@ -11,6 +11,7 @@ interface TimelineModalProps {
   year: string
   title: string
   company: string
+  website: string
   additionalInfo?: string
   images: string[]
   skills: string[]
@@ -24,7 +25,8 @@ export function TimelineModal({
   description,
   achievements,
   skills,
-  images
+  images,
+  website
 }: TimelineModalProps) {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -59,27 +61,37 @@ export function TimelineModal({
             transition={{ duration: 0.2 }}
             className="relative w-[90vw] max-w-4xl max-h-[90vh] overflow-y-auto bg-[rgb(18,18,18)] border border-gray-800 rounded-lg shadow-xl"
           >
-            <div className="p-6">
+            <div className="relative p-6">
               <div className="flex justify-between items-start mb-6">
-                <p className="text-sm text-green-500">Press <kbd className="px-2 py-1 bg-gray-800 rounded">ESC</kbd> to close</p>
-                <button
-                  onClick={onClose}
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <X className="h-6 w-6" />
-                </button>
+                <p className="text-sm text-green-500">press <kbd className="px-2 py-1 bg-gray-800 rounded">esc</kbd> to close</p>
+                <div className="flex items-center gap-4">
+                  <a
+                    href={website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-green-500 hover:underline"
+                  >
+                    visit company
+                  </a>
+                  <button
+                    onClick={onClose}
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    <X className="h-6 w-6" />
+                  </button>
+                </div>
               </div>
               
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">Description</h3>
+                  <h3 className="text-lg font-semibold text-white mb-2">description</h3>
                   <p className="text-gray-400">
                     {description}
                   </p>
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">Key Achievements</h3>
+                  <h3 className="text-lg font-semibold text-white mb-2">key achievements</h3>
                   <ul className="list-disc list-inside text-gray-400 space-y-2">
                     {achievements.map((achievement, index) => (
                       <li key={index}>{achievement}</li>
@@ -88,7 +100,7 @@ export function TimelineModal({
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">Skills & Competencies</h3>
+                  <h3 className="text-lg font-semibold text-white mb-2">skills & competencies</h3>
                   <div className="flex flex-wrap gap-2">
                     {skills.map((skill) => (
                       <span
