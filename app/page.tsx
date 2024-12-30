@@ -74,10 +74,10 @@ export default function Home() {
             transition={{ delay: 0.2 }}
             className="text-gray-700 dark:text-gray-200 mt-8 text-sm sm:text-base" 
           >
-            i'm in my mid 20s, studying information systems. i've a <span className="text-green-500">passion for solving problems</span>.
+            i&apos;m in my mid 20s, studying information systems. i&apos;ve a <span className="text-green-500">passion for solving problems</span>.
             my biggest strength is always being curious and having a drive for learning.
             currently interested in <span className="text-green-500">cloud computing</span>, latest <span className="text-green-500">ai developments</span> and how <span className="text-green-500">businesses</span> can benefit from it.
-            when i'm not reading about tech, you'll find me nerding about nba statistics, playing chess, or at the gym.
+            when i&apos;m not reading about tech, you&apos;ll find me nerding about nba statistics, playing chess, or at the gym.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

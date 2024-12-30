@@ -130,7 +130,7 @@ export default function ProjectsPage() {
         </div>
 
         <p className="text-gray-600 dark:text-gray-400 font-mono text-sm sm:text-base mb-8">
-          here are some of the projects i've worked on along the way.
+          here are some of the projects i&apos;ve worked on along the way.
         </p>
 
         <div className="space-y-6">
