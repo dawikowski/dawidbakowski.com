@@ -1,25 +1,36 @@
 # Personal Website
 
-My personal website built with Next.js, TypeScript, and CSS.
+Personal website built with Next.js, TypeScript, and Tailwind CSS. 
 
-## Setup
+Build with v0, deployed on vercel.
+
+## Development
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the site.
+View at [http://localhost:3000](http://localhost:3000)
+
+## Stack
+
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- next-themes
+- Roboto Mono font
 
 ## Structure
 
 ```
 ├── app/
-│   ├── blog/           # Blog posts
-│   ├── projects/       # Projects
-│   ├── page.tsx        # Home
+│   ├── blog/           # Blog pages
+│   ├── projects/       # Projects page
+│   ├── page.tsx        # Home page
 │   └── layout.tsx      # Root layout
-└── public/            # Assets
+├── components/         # React components
+├── lib/               # Utilities
+└── public/           # Static assets
 ```
-
-Built with Next.js and v0
