@@ -100,6 +100,14 @@ export default function Home() {
               x.com
             </a>
             <a
+              href="https://github.com/dawikowski"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-400 underline"
+            >
+              github
+            </a>
+            <a
               href="https://linkedin.com/in/dawidbakowski"
               target="_blank"
               rel="noopener noreferrer"
@@ -108,7 +116,7 @@ export default function Home() {
               linkedin
             </a>
             <a
-              href="/resume.pdf"
+              href="https://drive.google.com/file/d/1KbwyWDlwMjSE3PV9bUrZGOywsGtSI6xU/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-500 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-400 underline"
