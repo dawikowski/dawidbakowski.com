@@ -31,7 +31,6 @@ const projects: Project[] = [
     achievements: [
       "made the text do a little japanese scramble",
       "optimizations to keep the site speed on point",
-      "got the navigation bar silky smooth",
       "implemented responsive layouts",
       "had a lot of fun using v0 by vercel"
     ],
