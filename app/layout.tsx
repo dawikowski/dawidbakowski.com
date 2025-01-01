@@ -10,7 +10,7 @@ const robotoMono = Roboto_Mono({
 
 export const metadata: Metadata = {
   title: 'Dawid Bakowski - Solutions Architect & Student',
-  description: 'Solutions Architect, Information Systems Student.',
+  description: 'Solutions Architect, Information Systems (CS & Business) Student.',
   icons: {
     icon: '/images/favicon.ico',
   },
