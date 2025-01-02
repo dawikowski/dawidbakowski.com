@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description: 'Solutions Architect, Information Systems (CS & Business) Student.',
     siteName: 'Dawid Bakowski',
     images: [{
-      url: '/images/websitelogo.jpg',
+      url: '/images/og-picture.jpg',
       width: 1200,
       height: 630,
       alt: 'Dawid Bakowski - Solutions Architect & Student'
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Dawid Bakowski - Solutions Architect & Student',
     description: 'Solutions Architect, Information Systems (CS & Business) Student.',
-    images: ['/images/websitelogo.jpg'],
+    images: ['/images/og-picture.jpg'],
   },
   robots: {
     index: true,
