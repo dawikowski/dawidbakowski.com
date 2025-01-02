@@ -2,6 +2,7 @@ import { ThemeProvider } from '@/components/ThemeProvider'
 import './globals.css'
 import { Roboto_Mono } from 'next/font/google'
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/react'
 
 const robotoMono = Roboto_Mono({
   subsets: ['latin'],
@@ -57,6 +58,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
