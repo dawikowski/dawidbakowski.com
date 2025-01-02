@@ -29,7 +29,7 @@ const projects: Project[] = [
     image: "/images/myname.jpg",
     skills: ["software engineering", "typescript", "next.js", "tailwind css"],
     achievements: [
-      "made the text do a little japanese scramble",
+      "made the text do a little scramble",
       "optimizations to keep the site speed on point",
       "implemented responsive layouts",
       "had a lot of fun using v0 by vercel"
