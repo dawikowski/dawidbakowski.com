@@ -10,29 +10,29 @@ const robotoMono = Roboto_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Dawid Bakowski - Solutions Architect & Student',
-  description: 'Solutions Architect, Information Systems (CS & Business) Student.',
+  title: 'Dawid Bakowski - Solution Architect & Student',
+  description: 'Solution Architect, Information Systems (CS & Business) Student.',
   icons: {
     icon: '/images/favicon.ico',
   },
   openGraph: {
     type: 'website',
     url: 'https://dawidbakowski.com',
-    title: 'Dawid Bakowski - Solutions Architect & Student',
-    description: 'Solutions Architect, Information Systems (CS & Business) Student.',
+    title: 'Dawid Bakowski - Solution Architect & Student',
+    description: 'Solution Architect, Information Systems (CS & Business) Student.',
     siteName: 'Dawid Bakowski',
     images: [{
       url: '/images/og-picture.jpg',
       width: 1200,
       height: 630,
-      alt: 'Dawid Bakowski - Solutions Architect & Student'
+      alt: 'Dawid Bakowski - Solution Architect & Student'
     }],
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dawid Bakowski - Solutions Architect & Student',
-    description: 'Solutions Architect, Information Systems (CS & Business) Student.',
+    title: 'Dawid Bakowski - Solution Architect & Student',
+    description: 'Solution Architect, Information Systems (CS & Business) Student.',
     images: ['/images/og-picture.jpg'],
   },
   robots: {
