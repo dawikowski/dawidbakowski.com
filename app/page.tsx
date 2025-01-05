@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-// import { ThemeToggle } from '@/components/ThemeToggle'
 import { ScrambleHeading } from '@/components/ScrambleHeading'
 import { KeyboardNav } from '@/components/KeyboardNav'
 import { TimelineSection } from '@/components/TimelineSection'
@@ -42,7 +41,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-[rgb(18,18,18)] text-gray-900 dark:text-gray-100">
-      {/* <ThemeToggle /> */}
       <KeyboardNav />
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
