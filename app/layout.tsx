@@ -50,6 +50,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className={robotoMono.className}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Dawid Bakowski",
+              "description": "Solution Architect, Information Systems (CS & Business) Student.",
+              "url": "https://dawidbakowski.com"
+            })
+          }}
+        />
+      </head>
       <body>
         <ThemeProvider
           attribute="class"
