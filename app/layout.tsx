@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    url: 'https://dawidbakowski.com',
+    url: 'https://www.dawidbakowski.com',
     title: 'Dawid Bakowski - Solution Architect & Student',
     description: 'Solution Architect, Information Systems (CS & Business) Student.',
     siteName: 'Dawid Bakowski',
@@ -59,7 +59,7 @@ export default function RootLayout({
               "@type": "Person",
               "name": "Dawid Bakowski",
               "description": "Solution Architect, Information Systems (CS & Business) Student.",
-              "url": "https://dawidbakowski.com"
+              "url": "https://www.dawidbakowski.com"
             })
           }}
         />
