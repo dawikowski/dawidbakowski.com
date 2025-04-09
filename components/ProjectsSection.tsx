@@ -11,7 +11,7 @@ const projects = [
     title: "easyfind retail navigation",
     description: "designed intelligent store navigation integrating ar with indoor positioning",
     detailedDescription: "created ar retail navigation app concept with intuitive design and scalable cloud backend for information systems development course",
-    website: "https://google.com",
+    website: "https://drive.google.com/file/d/1E4XtXmCgUS3gMlhpVgt2mktw5xe2j0f6/view?usp=sharing",
     image: "/images/easyfind.jpg",
     skills: ["cloud architecture", "system design", "ui/ux design"],
     achievements: [
