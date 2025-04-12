@@ -114,7 +114,7 @@ export default function Home() {
               linkedin
             </a>
             <a
-              href="https://drive.google.com/file/d/1We1I2pkJ4BH0UOPMZeNRd7jx20zImTPK/view?usp=sharing"
+              href="https://drive.google.com/file/d/1LyEfAWB1FAC-OWKWDnL8itiIiCERL-6O/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-500 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-400 underline"
